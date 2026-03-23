@@ -14,13 +14,24 @@ cursor = banco.cursor()
 
 cursor.execute("CREATE DATABASE IF NOT EXISTS lucas_luan")
 
-#cursor.execute("""
+cursor.execute("""
 
-#CREATE TABLE IF NOT EXISTS Usuario (
+CREATE TABLE IF NOT EXISTS Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username Varchar(255),
     email Varchar(50),
     senha Varchar(100),
     idade INT
 )
+""")
+
+nome = input("Digite um nome: ")
+email = input("digite o email: ")
+senha = input("Digite a senha")
+idade = int(input("Digite a idade: "))
+
+
+cursor.execute("""
+insert into usuarios (nome, email, senha, idade)
+values ("nome","email","senha",'idade')
 """)
