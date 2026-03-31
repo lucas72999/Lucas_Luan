@@ -3,35 +3,26 @@
 import mysql.connector
 
 banco = mysql.connector.connect(
-    host="10.30.29.162",
+    host="10.30.29.100",
     port=3309,
     user="root",
     password="root123",
-    database="lucas_luan"
-)
-
+    database="vinicius_pedro"
+) #CONEXÃO
 cursor = banco.cursor()
 
-cursor.execute("CREATE DATABASE IF NOT EXISTS lucas_luan")
+cursor.execute("CREATE database IF NOT EXIST vinicius_pedro")
+
+#BANCO
+
+cursor.execute("CREATE database IF NOT EXIST vinicius_pedro")
+cursor.execute("USE vinicus_pedro")
 
 cursor.execute("""
-
-CREATE TABLE IF NOT EXISTS Usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username Varchar(255),
-    email Varchar(50),
-    senha Varchar(100),
+CREATE TABLE IF NOT EXIST Usuario 
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255),
+    email  VARCHAR(50),
+    senha VARCHAR(100),
     idade INT
-)
-""")
-
-nome = input("Digite um nome: ")
-email = input("digite o email: ")
-senha = input("Digite a senha")
-idade = int(input("Digite a idade: "))
-
-
-cursor.execute("""
-insert into usuarios (nome, email, senha, idade)
-values ("nome","email","senha",'idade')
 """)
