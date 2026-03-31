@@ -8,21 +8,24 @@ banco = mysql.connector.connect(
     user="root",
     password="root123",
     database="vinicius_pedro"
-) #CONEXÃO
-cursor = banco.cursor()
+)
+ #CONEXÃO
 
-cursor.execute("CREATE database IF NOT EXIST vinicius_pedro")
+cursor = banco.cursor()
 
 #BANCO
 
-cursor.execute("CREATE database IF NOT EXIST vinicius_pedro")
-cursor.execute("USE vinicus_pedro")
+cursor.execute("CREATE database vinicius_pedro")
+cursor.execute ("CREATE TABLE Usuario (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255),email  VARCHAR(50),senha VARCHAR(100),idade INT")
 
-cursor.execute("""
-CREATE TABLE IF NOT EXIST Usuario 
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(255),
-    email  VARCHAR(50),
-    senha VARCHAR(100),
-    idade INT
-""")
+nome = input("Digite o nome: ")
+email = input("Digite o email: ")
+senha = input("Digite a senha: ")
+idade = int(input("Digite a idade:" ))
+
+#inserir_dados(id, nome, email, senha, idade)
+cursor.execute(f"INSERT INTO Usuario (nome, email, senha, idade) VALUES ('{nome}', '{email}', '{senha}', {idade})")
+banco.commit()
+
+cursor.execute('SELECT *FROM Usuario')
+usuario = cursor.fetchall
